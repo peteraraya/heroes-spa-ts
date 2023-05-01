@@ -6,14 +6,15 @@ import { AuthContext } from '../../auth';
 
 export const Navbar = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
 
     // console.log(user);
 
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        // TODO: Desconectar el usuario (evita que pueda volver a la pantalla de heroes)
+        // Todo este proceso en sincrono
+        logout();
         navigate('/login', { replace: true });
     }
 

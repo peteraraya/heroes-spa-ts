@@ -7,27 +7,50 @@ import { authReducer } from './authReducer';
 import { types } from '../types/types';
 
 
-const initialState : AuthState = {
-  logged: false,
+// const initialState : AuthState = {
+//   logged: false,
+// }
+
+const init = () =>{
+
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+  return {
+    logged: !!user,
+    user: user,
+  }
 }
 
 export const AuthProvider = ({children} : ProviderProps) => {
 
   
-  const [authState, dispatch] = useReducer(authReducer, initialState);
+  const [authState, dispatch] = useReducer(authReducer, {}, init);
 
 
   // creamos una función que se encargue de cambiar el estado de logged
-  const onLogin = (name='') => {
+  const login = (name='') => {
+    
+    const user = { id:'ABC', name}
 
     const action:AuthAction = {
       type: types.login,
-      payload: {
-        id:'ABC',
-        name:name
-      }
+      payload: user
     }
-    
+
+    localStorage.setItem('user', JSON.stringify(user));
+
+    dispatch(action)
+  }
+
+  const logout = () => {
+
+    localStorage.removeItem('user');
+
+    const action:AuthAction = {
+      type: types.logout
+    }
+
+
     dispatch(action)
   }
 
@@ -36,7 +59,9 @@ export const AuthProvider = ({children} : ProviderProps) => {
   return (
     <AuthContext.Provider value={{
       ...authState,
-      login: onLogin
+      // Methods
+      login: login,
+      logout: logout,
     }}>
       {children}
     </AuthContext.Provider>

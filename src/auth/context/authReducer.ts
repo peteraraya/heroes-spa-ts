@@ -23,3 +23,8 @@ export const authReducer = (state:AuthState, action:AuthAction) => {
       return state;
   }
 }
+
+
+// no se utiliza este archivo para colocar el localStorage porque se utiliza el customHook useReducer
+
+// estos estan destinados a ser funciones puras que no llaman ninguna funcion externa
