@@ -16,3 +16,11 @@ export interface  charactesByHeroProps {
   alter_ego: string;
   characters: string;
 }
+
+export interface QueryProps {
+  q?: string;
+}
+
+export interface HeroFilterFunction {  
+  (name: string): HeroCardProps [];
+}
