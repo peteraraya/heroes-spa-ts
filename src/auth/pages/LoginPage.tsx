@@ -1,10 +1,21 @@
+import { useContext } from 'react'
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "..";
 
 export const LoginPage = () => {
 
+  // utilizamos useContext para obtener la información de autenticación
+
+  const { login } = useContext(AuthContext);
+  
+
+  // Utilizamos el hook useNavigate para navegar a la ruta /marvel
   const navigate = useNavigate();
 
   const handleLogin = () => {
+
+    login('Peter Parker');
+    
     navigate('/marvel', 
       { replace: true });
   }

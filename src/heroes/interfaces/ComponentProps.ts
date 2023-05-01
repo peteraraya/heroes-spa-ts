@@ -17,10 +17,3 @@ export interface  charactesByHeroProps {
   characters: string;
 }
 
-export interface QueryProps {
-  q?: string;
-}
-
-export interface HeroFilterFunction {  
-  (name: string): HeroCardProps [];
-}
