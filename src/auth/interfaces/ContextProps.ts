@@ -5,7 +5,7 @@ export  interface ProviderProps {
 }
 
 
-export interface AuthState {
+export interface AuthStateProps {
   logged: boolean;
 }
 
@@ -14,7 +14,15 @@ interface User {
   name: string;
 }
 
-export interface AuthAction {
+export interface AuthActionProps {
   type: string;
   payload?: User;
+}
+
+export interface AuthInitStateProps {
+  logged: boolean;
+  user: {
+    id?: string;
+    name?: string;
+  }; 
 }

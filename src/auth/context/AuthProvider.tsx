@@ -2,21 +2,17 @@
 // utiliza el authContext para proveer la información de autenticación
 import { useReducer }  from 'react';
 import { AuthContext } from "./AuthContext"
-import { AuthAction, AuthState, ProviderProps } from "../interfaces"
+import { AuthActionProps, AuthInitStateProps, ProviderProps } from "../interfaces"
 import { authReducer } from './authReducer';
 import { types } from '../types/types';
 
 
-// const initialState : AuthState = {
-//   logged: false,
-// }
+const init = (): AuthInitStateProps => {
 
-const init = () =>{
-
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
-
+  const user = JSON.parse( localStorage.getItem('user') || '{}');
+  
   return {
-    logged: !!user,
+    logged: !!user?.id , 
     user: user,
   }
 }
@@ -26,13 +22,12 @@ export const AuthProvider = ({children} : ProviderProps) => {
   
   const [authState, dispatch] = useReducer(authReducer, {}, init);
 
-
   // creamos una función que se encargue de cambiar el estado de logged
-  const login = (name='') => {
+  const login = (name ='') => {
     
     const user = { id:'ABC', name}
 
-    const action:AuthAction = {
+    const action:AuthActionProps = {
       type: types.login,
       payload: user
     }
@@ -46,10 +41,7 @@ export const AuthProvider = ({children} : ProviderProps) => {
 
     localStorage.removeItem('user');
 
-    const action:AuthAction = {
-      type: types.logout
-    }
-
+    const action:AuthActionProps = {type: types.logout}
 
     dispatch(action)
   }

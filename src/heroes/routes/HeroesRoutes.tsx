@@ -16,7 +16,7 @@ export const HeroesRoutes = () => {
           <Route path={`${RUTAS.HERO}/:id`}    element={<HeroPage   />} />
 
           {/* Redireccionar */}
-          <Route path={RUTAS.HOME}    element={<Navigate to={RUTAS.MARVEL} />} />
+          <Route path={RUTAS.ALL}    element={<Navigate to={RUTAS.MARVEL} />} />
         </Routes>
       </div>
     </>

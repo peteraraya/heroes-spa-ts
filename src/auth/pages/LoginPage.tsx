@@ -14,7 +14,7 @@ export const LoginPage = () => {
 
   const handleLogin = () => {
 
-    login('Peter Parker');
+    login('Peter Araya');
     
     navigate('/marvel', 
       { replace: true });
