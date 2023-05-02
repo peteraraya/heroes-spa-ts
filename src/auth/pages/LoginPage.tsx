@@ -14,10 +14,12 @@ export const LoginPage = () => {
 
   const handleLogin = () => {
 
+    const lastPath = localStorage.getItem('lastPath') || '/';
+
     login('Peter Araya');
     
-    navigate('/marvel', 
-      { replace: true });
+    navigate(lastPath, { replace: true });
+
   }
 
   return (
