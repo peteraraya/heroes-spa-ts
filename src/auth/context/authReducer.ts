@@ -1,8 +1,8 @@
-import { AuthAction, AuthState } from "../interfaces";
+import { AuthActionProps, AuthStateProps } from "../interfaces";
 import { types } from "../types/types";
 
 
-export const authReducer = (state:AuthState, action:AuthAction) => {
+export const authReducer = (state:AuthStateProps, action:AuthActionProps) => {
 
 
   switch (action.type) {

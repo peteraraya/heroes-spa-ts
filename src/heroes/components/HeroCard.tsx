@@ -15,7 +15,6 @@ const CharactesByHero = ({alter_ego, characters}:charactesByHeroProps) =>{
 export const HeroCard = ({
   id,
   superhero,
-  publisher,
   alter_ego,
   first_appearance,
   characters,
